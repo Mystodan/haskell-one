@@ -3,12 +3,15 @@
 
 ## Testing
 ###### **Used Hspec and DocTest**
+> Used `stack test` to run tests<br>
+
 > Testing was done in /test/Spec.hs
 > [Hspec](http://hspec.github.io) is a well-designed BDD-style library and DSL wrapper on top of `HUnit` and `QuickCheck` property testing. Check it out. Use it! Use it to write simple tests for your pure functions. Those functions are simple enough that coming up with invariants for property testing should be easy. Also, when doing property testing you can compare YOUR functions with build-in functions!
 
 ## Functions
-> All functions were done inside /src/Lib.hs<br>
+> Used `stack ghci` in order to load all modules and run functions <br>
 
+> All functions were done inside /src/Lib.hs<br>
 > /app/Main.hs has no functions
 ### Lists
 
