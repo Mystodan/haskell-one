@@ -44,7 +44,7 @@ main = hspec $ do
 
 -- countOcc
   describe "countOcc" $ do
-    it "counts amount x is part of list as occurance" $ do
+    it "counts occurances of x from a provided list" $ do
       countOcc (1::Int) ([1..6]::[Int]) `shouldBe` (1 :: Int)
       countOcc ("A"::[Char]) (["A","B","C","A"]::[[Char]]) `shouldBe` (2 :: Int)
       countOcc (7::Int) ([1..6]::[Int]) `shouldBe` (0 :: Int)
@@ -55,7 +55,7 @@ main = hspec $ do
 
 -- listSum
   describe "listSum" $ do
-    it "sums a given list of ints" $ do
+    it "sums a provided list of ints and returns the number" $ do
       listSum ([1..3]::[Int])  `shouldBe` (6 :: Int)
       listSum ([3,2,1]::[Int]) `shouldBe` (6 :: Int)
       listSum ([9,9,9]::[Int])  `shouldBe` (27 :: Int)
@@ -66,7 +66,7 @@ main = hspec $ do
 
 -- myReverse
   describe "myReverse" $ do
-    it "reverses a given list" $ do
+    it "reverses a given list and returns the reversed list" $ do
       myReverse ([1..6]::[Int]) `shouldBe` ([6,5,4,3,2,1]::[Int])
       myReverse (["A","B","C","A"]::[[Char]]) `shouldBe` (["A","C","B","A"]::[[Char]])
       myReverse ([3,2,1]::[Int])  `shouldBe` ([1,2,3]::[Int]) 
@@ -77,7 +77,7 @@ main = hspec $ do
 
 -- listUp
   describe "listUp" $ do
-    it "creates an int list with elements from 1 to n" $ do
+    it "creates and returns a list of ints with elements from 1 to n" $ do
       listUp (6 :: Int) `shouldBe` ([1..6]::[Int])
       listUp (15 :: Int) `shouldBe` ([1..15]::[Int])
   
@@ -98,7 +98,7 @@ main = hspec $ do
 
 -- rotate
   describe "rotate" $ do
-    it "rotate a given list" $ do
+    it "rotate a given list and returns it" $ do
       rotate (3::Int) ([1..6]::[Int]) `shouldBe` ([4,5,6,1,2,3]::[Int])
       rotate (2::Int) ([1..6]::[Int]) `shouldBe` ([3,4,5,6,1,2]::[Int])
       rotate (5::Int) ([1..6]::[Int]) `shouldBe` ([6,1,2,3,4,5]::[Int])
@@ -109,7 +109,7 @@ main = hspec $ do
 
 -- countDown
   describe "countDown" $ do
-    it "counts down from a number" $ do
+    it "counts down from a number and returns it as string" $ do
       countDown (3::Int)  `shouldBe` ("3 2 1"::String)
       countDown (2::Int)  `shouldBe` ("2 1"::String)
       countDown (5::Int)  `shouldBe` ("5 4 3 2 1"::String)
@@ -118,9 +118,9 @@ main = hspec $ do
       it "returns an empty string"  $ do
         countDown 0  `shouldBe` (""::String)
 
--- countDown
+-- countUp
   describe "countUp" $ do
-    it "counts up to a number" $ do
+    it "counts up to a number and returns it as string" $ do
       countUp (10::Int)  `shouldBe` ("1 2 3 4 5 6 7 8 9 10"::String)
       countUp (5::Int)  `shouldBe` ("1 2 3 4 5"::String)
       countUp (1::Int)  `shouldBe` ("1"::String)
@@ -131,7 +131,7 @@ main = hspec $ do
 
 -- mult
   describe "mult" $ do
-    it "multiplies without using built-in multiplication" $ do
+    it "multiplication without using built-in multiplication" $ do
       mult (10::Int) (10::Int)   `shouldBe` (100::Int) 
       mult (5::Int) (10::Int)  `shouldBe` (50::Int) 
       mult (1::Int) (1::Int)   `shouldBe` (1::Int) 
@@ -140,34 +140,23 @@ main = hspec $ do
       it "returns 0"  $ do
         mult (0::Int) (0::Int)   `shouldBe` (0::Int) 
 
--- mult
-  describe "mult" $ do
-    it "multiplies without using built-in multiplication" $ do
-      mult (10::Int) (10::Int)   `shouldBe` (100::Int) 
-      mult (5::Int) (10::Int)  `shouldBe` (50::Int) 
-      mult (1::Int) (1::Int)   `shouldBe` (1::Int) 
-  
-    context "multiplying with 0" $ do
-      it "returns 0"  $ do
-        mult (0::Int) (0::Int)   `shouldBe` (0::Int) 
-
-
--- power
+-- power  (using internal multiplication) 
   describe "power" $ do
-    it "to the power of using built-in multiplication" $ do
+    it "x to the power of n using built-in multiplication" $ do
       power (5::Int) (2::Int)   `shouldBe` (25::Int) 
       power (1::Int) (10::Int)  `shouldBe` (1::Int) 
       power (99::Int) (0::Int)   `shouldBe` (1::Int) 
       
-    context "multiplying with 0" $ do
+    context "x pow n with 0" $ do
       it "returns 0"  $ do
         power (0::Int) (0::Int)   `shouldBe` (1::Int) 
+-- power' (using external multiplication)       
   describe "power'" $ do
-    it "to the power of without using built-in multiplication" $ do
+    it "x to the power of n without using built-in multiplication" $ do
       power' (5::Int) (2::Int)   `shouldBe` (25::Int) 
       power' (1::Int) (10::Int)  `shouldBe` (1::Int) 
       power' (99::Int) (0::Int)   `shouldBe` (1::Int) 
       
-    context "multiplying with 0" $ do
+    context "x pow n with 0" $ do
       it "returns 0"  $ do
         power' (0::Int) (0::Int)   `shouldBe` (1::Int) 

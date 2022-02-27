@@ -47,20 +47,22 @@ rotate n list = val ++ rotVal where
   (rotVal, val) = splitAt n list 
 
 {- 
-removes(drop n) the n amount of numbers from the start of the inf. looping array(cycle xs).
-then it takes the values from the inf. array and zips it until one of its arguments have been fully traversed
-f.ex: 1,2,3,4 -> 1,2,3,4,1,2,3,4... -> 3,4,1,2,3,4... -> 3,4,1,2
-      original     cycle xs               drop n         zipWith ends when xs has been fully traversed
+!! Function provided by assignment
+  removes(drop n) the n amount of numbers from the start of the inf. looping array(cycle xs).
+  then it takes the values from the inf. array and zips it until one of its arguments have been fully traversed
+  f.ex: 1,2,3,4 -> 1,2,3,4,1,2,3,4... -> 3,4,1,2,3,4... -> 3,4,1,2
+        original     cycle xs               drop n         zipWith ends when xs has been fully traversed
  -}
 rotate' :: Int -> [a] -> [a]  
 rotate' _ [] = []
 rotate' n xs = zipWith const (drop n (cycle xs)) xs
 
 {- 
-removes(drop n) the n amount of numbers from the start of the inf. looping array(cycle xs).
-then grabs the array with its original intended size(take(length xs)), containing the new numbers with the numbers switched 
-f.ex: 1,2,3,4 -> 1,2,3,4,1,2,3,4... -> 3,4,1,2,3,4... -> 3,4,1,2
-      original     cycle xs               drop n          take (length xs) ()
+!! Function provided by assignment
+  removes(drop n) the n amount of numbers from the start of the inf. looping array(cycle xs).
+  then grabs the array with its original intended size(take(length xs)), containing the new numbers with the numbers switched 
+  f.ex: 1,2,3,4 -> 1,2,3,4,1,2,3,4... -> 3,4,1,2,3,4... -> 3,4,1,2
+        original     cycle xs               drop n          take (length xs) ()
  -}
 rotate'' :: Int -> [a] -> [a]
 rotate'' n xs = take (length xs) (drop n (cycle xs)) 
