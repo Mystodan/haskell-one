@@ -48,5 +48,9 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - haskell-one
-    - hspec
+    - doctest
     - QuickCheck
+    - HUnit
+    - hspec
+
+

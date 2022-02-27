@@ -1,6 +1,5 @@
 -- file Spec.hs
-import Test.Hspec (hspec, describe, shouldBe, it, shouldThrow, anyException, context)
-import Test.QuickCheck (Testable (property))
+import Test.Hspec 
 import Control.Exception(evaluate)
 import Lib (myLength,
              member,
@@ -15,12 +14,12 @@ import Lib (myLength,
              mult,
              power,
              power') 
-import Text.Read (Lexeme(String))
 
 
 
-main :: IO ()
-main = hspec $ do
+
+spec_myLength :: Spec
+spec_myLength = do
 -- myLength
   describe "myLength" $ do
     it "returns the size of a list" $ do
@@ -31,6 +30,8 @@ main = hspec $ do
       it "returns 0" $ do
         myLength ([]::[Int]) `shouldBe` (0 :: Int)
 
+spec_member :: Spec
+spec_member =  do
 -- member
   describe "member" $ do
     it "checks if x is part of list" $ do
@@ -42,6 +43,8 @@ main = hspec $ do
       it "returns false" $ do
         member (1::Int) ([]::[Int]) `shouldBe` (False :: Bool)
 
+spec_countOcc ::Spec
+spec_countOcc = do
 -- countOcc
   describe "countOcc" $ do
     it "counts occurances of x from a provided list" $ do
@@ -53,6 +56,8 @@ main = hspec $ do
       it "returns 0" $ do
         countOcc (1::Int) ([]::[Int]) `shouldBe` (0 :: Int)
 
+spec_listSum :: Spec
+spec_listSum = do
 -- listSum
   describe "listSum" $ do
     it "sums a provided list of ints and returns the number" $ do
@@ -64,6 +69,8 @@ main = hspec $ do
       it "returns 0" $ do
         listSum ([]::[Int]) `shouldBe` (0 :: Int)
 
+spec_myReverse :: Spec
+spec_myReverse = do
 -- myReverse
   describe "myReverse" $ do
     it "reverses a given list and returns the reversed list" $ do
@@ -75,6 +82,8 @@ main = hspec $ do
       it "returns an empty list []"  $ do
         myReverse ([]::[Int]) `shouldBe` ([]::[Int])
 
+spec_listUp :: Spec
+spec_listUp = do
 -- listUp
   describe "listUp" $ do
     it "creates and returns a list of ints with elements from 1 to n" $ do
@@ -85,6 +94,8 @@ main = hspec $ do
       it "returns an empty list []" $ do
         listUp (0::Int) `shouldBe` ([]::[Int])   
  
+spec_palindrome :: Spec
+spec_palindrome =  do 
  -- palindrome
   describe "palindrome" $ do
     it "checks if string is palindrome" $ do
@@ -96,6 +107,8 @@ main = hspec $ do
       it "returns True" $ do
         palindrome (""::String) `shouldBe` (True :: Bool)  
 
+spec_rotate :: Spec
+spec_rotate = do 
 -- rotate
   describe "rotate" $ do
     it "rotate a given list and returns it" $ do
@@ -107,6 +120,8 @@ main = hspec $ do
       it "returns an empty list []"  $ do
         rotate 0 ([]::[Int]) `shouldBe` ([]::[Int])
 
+spec_describe :: Spec
+spec_describe = do 
 -- countDown
   describe "countDown" $ do
     it "counts down from a number and returns it as string" $ do
@@ -118,6 +133,8 @@ main = hspec $ do
       it "returns an empty string"  $ do
         countDown 0  `shouldBe` (""::String)
 
+spec_countUp :: Spec
+spec_countUp = do 
 -- countUp
   describe "countUp" $ do
     it "counts up to a number and returns it as string" $ do
@@ -129,6 +146,8 @@ main = hspec $ do
       it "returns an empty string"  $ do
         countUp 0  `shouldBe` (""::String)
 
+spec_mult :: Spec
+spec_mult = do 
 -- mult
   describe "mult" $ do
     it "multiplication without using built-in multiplication" $ do
@@ -140,6 +159,8 @@ main = hspec $ do
       it "returns 0"  $ do
         mult (0::Int) (0::Int)   `shouldBe` (0::Int) 
 
+spec_power :: Spec
+spec_power =  do 
 -- power  (using internal multiplication) 
   describe "power" $ do
     it "x to the power of n using built-in multiplication" $ do
@@ -150,6 +171,9 @@ main = hspec $ do
     context "x pow n with 0" $ do
       it "returns 0"  $ do
         power (0::Int) (0::Int)   `shouldBe` (1::Int) 
+
+spec_power' :: Spec
+spec_power'= do 
 -- power' (using external multiplication)       
   describe "power'" $ do
     it "x to the power of n without using built-in multiplication" $ do
@@ -158,5 +182,25 @@ main = hspec $ do
       power' (99::Int) (0::Int)   `shouldBe` (1::Int) 
       
     context "x pow n with 0" $ do
-      it "returns 0"  $ do
+      it "returns 1"  $ do
         power' (0::Int) (0::Int)   `shouldBe` (1::Int) 
+
+
+main :: IO ()
+main = do
+  hspec $ do
+    spec_myLength
+    spec_member
+    spec_countOcc
+    spec_listSum
+    spec_myReverse
+    spec_listUp
+    spec_palindrome
+    spec_rotate
+    spec_describe
+    spec_countUp
+    spec_mult
+    spec_power 
+    spec_power'
+
+

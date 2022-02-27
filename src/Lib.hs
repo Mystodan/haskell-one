@@ -15,6 +15,18 @@ module Lib  (myLength,
              power') where
 
 -- Lists
+
+
+
+-- | myLength
+--
+-- Examples:
+--
+-- >>> myLength [1..5]
+-- 5
+--
+-- >>> myLength []
+-- 0
 myLength :: [a] -> Int
 myLength = sum . map(const 1)
 
