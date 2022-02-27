@@ -16,8 +16,6 @@ module Lib  (myLength,
 
 -- Lists
 
-
-
 -- | myLength
 --
 -- Examples:
@@ -30,30 +28,94 @@ module Lib  (myLength,
 myLength :: [a] -> Int
 myLength = sum . map(const 1)
 
+-- | member
+--
+-- Examples:
+--
+-- >>> member 1 [1..6]
+-- True
+--
+-- >>> member 1 []
+-- False
 member :: Eq a => a -> [a] -> Bool
 member want [] = False
 member want (elem:list)|
  want == elem = True |
  otherwise = member want list
  
+-- | countOcc
+--
+-- Examples:
+--
+-- >>> countOcc 1 [1..6]
+-- 1
+--
+-- >>> countOcc 1 []
+-- 0
 countOcc :: Eq a => a -> [a] -> Int
 countOcc want [] = 0
 countOcc want list = sum $
  map(const 1) $
  filter (==want) list
 
+ 
+-- | listSum
+--
+-- Examples:
+--
+-- >>> listSum [1..3]
+-- 6
+--
+-- >>> listSum []
+-- 0
 listSum::[Int] -> Int
 listSum = foldr (+) 0x0
 
+-- | myReverse
+--
+-- Examples:
+--
+-- >>> myReverse [1..3]
+-- [3,2,1]
+--
+-- >>> myReverse []
+-- []
 myReverse :: [a] -> [a]
 myReverse = foldl (flip (:)) []
 
+-- | listUp
+--
+-- Examples:
+--
+-- >>> listUp 3
+-- [1,2,3]
+--
+-- >>> listUp 0
+-- []
 listUp::Int -> [Int]
 listUp n = [1..n]
 
+-- | palindrome
+--
+-- Examples:
+--
+-- >>> palindrome "eve"
+-- True
+--
+-- >>> palindrome "palindrome"
+-- False
 palindrome :: String -> Bool
 palindrome inn = inn == myReverse inn
 
+-- | rotate
+--
+-- Examples:
+--
+-- >>> rotate 3 [1..6]
+-- [4,5,6,1,2,3]
+--
+-- >>> rotate 0 []
+-- []
 rotate :: Int -> [a] -> [a]
 rotate n list = val ++ rotVal where
   (rotVal, val) = splitAt n list 
@@ -81,6 +143,21 @@ rotate'' n xs = take (length xs) (drop n (cycle xs))
 
 
 -- Recursion
+
+
+
+-- | countDown
+--
+-- Examples:
+--
+-- >>> countDown 3 
+-- "3 2 1"
+--
+-- >>> countDown 0 
+-- ""
+-- 
+-- >>> countDown (-1) 
+-- "invalid input"
 countDown :: Int -> String
 countDown n
   | n == 0 = ""
@@ -88,6 +165,18 @@ countDown n
   | n > 0 = show n ++ " " ++ countDown(n-1)
   | otherwise = "invalid input"
 
+-- | countUp
+--
+-- Examples:
+--
+-- >>> countUp 3 
+-- "1 2 3"
+--
+-- >>> countUp 0 
+-- ""
+-- 
+-- >>> countUp (-1) 
+-- "invalid input"
 countUp :: Int -> String
 countUp n
   | n == 0 = ""
@@ -95,21 +184,51 @@ countUp n
   | n > 0 =  countUp(n-1) ++ " " ++ show n
   | otherwise = "invalid input"
 
--- without built-in multiplication
-mult :: Int -> Int -> Int
+-- | mult
+--
+-- Examples:
+--
+-- >>> mult 10 10
+-- 100
+--
+-- >>> mult 0 0
+-- 0
+mult :: Int -> Int -> Int -- without built-in multiplication
 mult x y
  | x <= 0 = 0
  | otherwise = y + mult (x-1) y
 
--- using built-in multiplication
-power :: Int -> Int -> Int
+-- | power
+--
+-- Examples:
+--
+-- >>> power 5 2
+-- 25
+--
+-- >>> power 1 10
+-- 1
+--
+-- >>> power 0 0
+-- 1
+power :: Int -> Int -> Int -- using built-in multiplication
 power x n
  | n == 1 = x
  | n == 0 = 1
  | n < 0 = 0
  | otherwise =  x * power x (n-1)
--- using my own multiplication
-power' :: Int -> Int -> Int
+-- | power'
+--
+-- Examples:
+--
+-- >>> power' 5 2
+-- 25
+--
+-- >>> power' 1 10
+-- 1
+--
+-- >>> power' 0 0
+-- 1
+power' :: Int -> Int -> Int -- using my own multiplication
 power' x n
  | n == 1 = x
  | n == 0 = 1
