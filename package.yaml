@@ -2,9 +2,9 @@ name:                haskell-one
 version:             0.1.0.0
 github:              "githubuser/haskell-one"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2022 Author name here"
+author:              "Daniel Hao Huynh"
+maintainer:          "daniehhu@stud.ntnu.no"
+copyright:           "2022 Daniel Hao Huynh"
 
 extra-source-files:
 - README.md
@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- hspec
+- QuickCheck
 
 library:
   source-dirs: src
@@ -46,3 +48,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - haskell-one
+  

@@ -9,6 +9,7 @@ module Lib  (myLength,
              rotate',
              rotate'',
              countDown,
+             countUp,
              mult,
              power,
              power') where
@@ -22,7 +23,7 @@ member want [] = False
 member want (elem:list)|
  want == elem = True |
  otherwise = member want list
-
+ 
 countOcc :: Eq a => a -> [a] -> Int
 countOcc want [] = 0
 countOcc want list = sum $
@@ -80,18 +81,20 @@ countUp n
   | n > 0 =  countUp(n-1) ++ " " ++ show n
   | otherwise = "invalid input"
 
+-- without built-in multiplication
 mult :: Int -> Int -> Int
 mult x y
  | x <= 0 = 0
  | otherwise = y + mult (x-1) y
 
+-- using built-in multiplication
 power :: Int -> Int -> Int
 power x n
  | n == 1 = x
  | n == 0 = 1
  | n < 0 = 0
  | otherwise =  x * power x (n-1)
-
+-- using my own multiplication
 power' :: Int -> Int -> Int
 power' x n
  | n == 1 = x
