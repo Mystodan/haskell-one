@@ -2,11 +2,15 @@
 ##### By Daniel Hao Huynh
 
 ## Testing
-###### **Used Hspec**
->[Hspec](http://hspec.github.io) is a well-designed BDD-style library and DSL wrapper on top of `HUnit` and `QuickCheck` property testing. Check it out. Use it! Use it to write simple tests for your pure functions. Those functions are simple enough that coming up with invariants for property testing should be easy. Also, when doing property testing you can compare YOUR functions with build-in functions!
+###### **Used Hspec and DocTest**
+> Testing was done in /test/Spec.hs
+> [Hspec](http://hspec.github.io) is a well-designed BDD-style library and DSL wrapper on top of `HUnit` and `QuickCheck` property testing. Check it out. Use it! Use it to write simple tests for your pure functions. Those functions are simple enough that coming up with invariants for property testing should be easy. Also, when doing property testing you can compare YOUR functions with build-in functions!
 
+## Functions
+> All functions were done inside /src/Lib.hs<br>
 
-## Lists
+> /app/Main.hs has no functions
+### Lists
 
 Most of those exercises have equivalent functions already defined in the standard library or Preamble. Do not use the standard function to solve the problem, but use other methods to achieve the same result.
 
@@ -58,7 +62,7 @@ rotate'' n xs = take (length xs) (drop n (cycle xs))
 
 > In my code i have defined the rotate functions provided by our lecturer as `rotate':: Int -> [a] -> [a]`  and `rotate'':: Int -> [a] -> [a]` 
 
-## Recursion
+### Recursion
 
 * write a function `countDown` (with type `Int → String`) that produces a String counting down from a number. For example `countDown 5` is `"5 4 3 2 1 "`. Note that there is an extra space at the end — that’s supposed to make it easier. 
 * Bonus: get rid of the extra space! 
